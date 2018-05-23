@@ -3,7 +3,7 @@
     <name>Login2PhoneNumber</name>
     <description>An awesome MRU Studio phone auth demo Login2PhoneNumber app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">MRU Studio Team </author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.108:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
