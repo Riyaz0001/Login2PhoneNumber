@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { DashboardPage } from "../dashboard/dashboard";
 
-declare var cordova: any;
+// declare var cordova: any;
 
 @IonicPage()
 @Component({
@@ -31,6 +31,30 @@ export class LoginPage {
 
       }, (err) => {
         alert('Phone Auth Error: ' + JSON.stringify(err))
+      })
+
+    });
+  }
+
+  loginWithEmail() {
+    (<any>window).AccountKitPlugin.loginWithEmail({
+      
+        useAccessToken: true,
+        defaultCountryCode: "BD",
+        facebookNotificationsEnabled: true,
+        initialEmail: "joe@doe.com"
+      
+    }, (data) => {
+      
+      (<any>window).AccountKitPlugin.getAccount((result) => {
+
+        console.log(JSON.stringify(result));
+        
+
+        this.navCtrl.setRoot(DashboardPage);
+
+      }, (err) => {
+        alert('Email Auth Error: ' + JSON.stringify(err))
       })
 
     });
