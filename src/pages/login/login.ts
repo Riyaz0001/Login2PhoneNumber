@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { DashboardPage } from "../dashboard/dashboard";
+
 declare var cordova: any;
 
 @IonicPage()
@@ -18,20 +20,20 @@ export class LoginPage {
   }
 
   loginWithPhone() {
-    cordova.AccountKitPlugin.loginWithPhoneNumber({
+    (<any>window).AccountKitPlugin.loginWithPhoneNumber({
         useAccessToken: true,
         defaultCountryCode: "BD",
         facebookNotificationsEnabled: true
     }, (data) => {
       
-      cordova.AccountKitPlugin.getAccount((result) => {
-        this.navCtrl.setRoot('DashboardPage');
+      (<any>window).AccountKitPlugin.getAccount((result) => {
+        this.navCtrl.setRoot(DashboardPage);
 
       }, (err) => {
         alert('Phone Auth Error: ' + JSON.stringify(err))
       })
 
-    })
+    });
   }
 
 }
